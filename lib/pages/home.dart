@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class Home extends StatelessWidget {
 
   @override
-  Widget build(BuildContext) {
+  Widget build(BuildContext context) {
     
     var day = 30;
     var name = "Kaustubh's";
