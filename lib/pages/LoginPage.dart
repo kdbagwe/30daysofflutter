@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_catalog_1/utils/MyRoute.dart';
 
 class LoginPage extends StatelessWidget {
 
@@ -6,50 +7,56 @@ class LoginPage extends StatelessWidget {
   Widget build(BuildContext context) {
 
     return Material(
-      child: Column(
-        children: [
-          Image.asset(
-            "assets/images/undraw_Access_account_re_8spm.png", 
-            fit: BoxFit.contain,
-          ),
-          SizedBox(height: 20.0),
-          Text("Welcome",
-            style: TextStyle(
-              fontSize: 28,
-              fontWeight: FontWeight.bold
+      color: Colors.white,
+      child: SingleChildScrollView(
+        child: Column(
+          children: [
+            Image.asset(
+              "assets/images/undraw_Access_account_re_8spm.png", 
+              fit: BoxFit.contain
+            ),
+            SizedBox(height: 20.0),
+            Text("Welcome",
+              style: TextStyle(
+                fontSize: 32,
+                fontWeight: FontWeight.bold
+              )
+            ),
+            SizedBox(height: 20.0),
+            Padding(
+              padding: const EdgeInsets.symmetric(
+                vertical: 16.0, horizontal: 32.0
+              ),
+              child: Column(
+                children: [
+                  TextFormField(
+                    decoration: InputDecoration(
+                      hintText: 'Enter Username',
+                      labelText: 'Username',
+                    ),
+                  ),
+                  TextFormField(
+                    obscureText: true,
+                    decoration: InputDecoration(
+                      hintText: 'Enter Password',
+                      labelText: 'Password',
+                    ),
+                  )
+                ]
+              ),
+            ),
+            SizedBox(height: 20.0),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.pushNamed(context, MyRoute.homePage);
+              }, 
+              child: Text("Login"),
+              style: TextButton.styleFrom(
+                minimumSize: Size(120, 40)
+              ),
             )
-          ),
-          SizedBox(height: 20.0),
-          Padding(
-            padding: const EdgeInsets.symmetric(
-              vertical: 16.0, horizontal: 32.0
-            ),
-            child: Column(
-              children: [
-                TextFormField(
-                  decoration: InputDecoration(
-                    hintText: 'Enter Username',
-                    labelText: 'Username',
-                  ),
-                ),
-                TextFormField(
-                  obscureText: true,
-                  decoration: InputDecoration(
-                    hintText: 'Enter Password',
-                    labelText: 'Password',
-                  ),
-                )
-              ]
-            ),
-          ),
-          SizedBox(height: 20.0),
-          ElevatedButton(
-            onPressed: () {
-              print("Login btn pressed");
-            }, 
-            child: Text("Login"),
-          )
-        ]
+          ]
+        )
       )
     );
   }
