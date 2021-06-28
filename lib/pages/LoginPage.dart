@@ -1,9 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_catalog_1/utils/MyRoute.dart';
 
-class LoginPage extends StatelessWidget {
+class LoginPage extends StatefulWidget {
 
   @override
+  _LoginPageState createState() => _LoginPageState();
+}
+
+class _LoginPageState extends State<LoginPage> {
+  @override
+  String name = "";
+  bool animate = false;
+
   Widget build(BuildContext context) {
 
     return Material(
@@ -11,12 +19,12 @@ class LoginPage extends StatelessWidget {
       child: SingleChildScrollView(
         child: Column(
           children: [
-            Image.asset(
-              "assets/images/undraw_Access_account_re_8spm.png", 
-              fit: BoxFit.contain
-            ),
+            // Image.asset(
+            //   "assets/images/undraw_Access_account_re_8spm.png", 
+            //   fit: BoxFit.contain
+            // ),
             SizedBox(height: 20.0),
-            Text("Welcome",
+            Text("Welcome $name",
               style: TextStyle(
                 fontSize: 32,
                 fontWeight: FontWeight.bold
@@ -34,6 +42,10 @@ class LoginPage extends StatelessWidget {
                       hintText: 'Enter Username',
                       labelText: 'Username',
                     ),
+                    onChanged: (value) {
+                      name = value;
+                      setState(() {});
+                    },
                   ),
                   TextFormField(
                     obscureText: true,
@@ -46,15 +58,45 @@ class LoginPage extends StatelessWidget {
               ),
             ),
             SizedBox(height: 20.0),
-            ElevatedButton(
-              onPressed: () {
+            InkWell(
+              onTap: () async {
+                animate = true;
+                setState(() {});
+                await Future.delayed(Duration(seconds: 1));
                 Navigator.pushNamed(context, MyRoute.homePage);
-              }, 
-              child: Text("Login"),
-              style: TextButton.styleFrom(
-                minimumSize: Size(120, 40)
+              },
+              child: AnimatedContainer(
+                duration: Duration(milliseconds: 100),
+                width: animate ? 30 : 120,
+                height: animate ? 30 : 40,
+                child: animate
+                ? Icon(
+                  Icons.done,
+                  color: Colors.white,
+                ) 
+                : Text(
+                  "Login",
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold
+                  ),
+                ),
+                alignment: Alignment.center,
+                decoration: BoxDecoration(
+                  color: Colors.deepPurple,
+                  borderRadius: animate ? BorderRadius.circular(50) : BorderRadius.circular(5)
+                ),
               ),
             )
+            // ElevatedButton(
+            //   onPressed: () {
+            //     Navigator.pushNamed(context, MyRoute.homePage);
+            //   }, 
+            //   child: Text("Login"),
+            //   style: TextButton.styleFrom(
+            //     minimumSize: Size(120, 40)
+            //   ),
+            // )
           ]
         )
       )
