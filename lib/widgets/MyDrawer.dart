@@ -9,22 +9,27 @@ class MyDrawer extends StatelessWidget {
   Widget build(BuildContext context) {
     return Drawer(
       child: Container(
-        color: Colors.yellow,
+        color: Colors.deepOrange,
         child: ListView(
           children: [
             DrawerHeader(
               padding: EdgeInsets.zero,
               child: UserAccountsDrawerHeader(
+                decoration: BoxDecoration(
+                  color: Colors.deepOrange
+                ),
                 accountName: Text(
                   'Kaustubh Bagwe',
                   style: TextStyle(
-                    fontWeight: FontWeight.bold
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white
                   )
                 ),
                 accountEmail: Text(
                   'kdbagwe@gmail.com',
                   style: TextStyle(
-                    fontWeight: FontWeight.bold
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white
                   )
                 ),
                 currentAccountPicture: CircleAvatar(
@@ -35,36 +40,39 @@ class MyDrawer extends StatelessWidget {
             ListTile(
               leading: Icon(
                 CupertinoIcons.home,
-                color: Colors.black
+                color: Colors.white
               ),
               title: Text(
                 'Home',
                 style: TextStyle(
-                  fontWeight: FontWeight.bold
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white
                 )
               ),
             ),
             ListTile(
               leading: Icon(
                 CupertinoIcons.profile_circled,
-                color: Colors.black
+                color: Colors.white
               ),
               title: Text(
                 'Profile',
                 style: TextStyle(
-                  fontWeight: FontWeight.bold
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white
                 )
               ),
             ),
             ListTile(
               leading: Icon(
                 CupertinoIcons.mail,
-                color: Colors.black
+                color: Colors.white
               ),
               title: Text(
                 'Email',
                 style: TextStyle(
-                  fontWeight: FontWeight.bold
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white
                 )
               ),
             )
